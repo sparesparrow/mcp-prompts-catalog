@@ -1,44 +1,42 @@
-# MCP Prompts Collection - TODO
+# MCP Prompts Catalog - Roadmap & TODO
 
-## Úkoly pro migraci a vývoj
+## Phase 1: Repository Setup
+- [x] Create `package.json` with dependencies
+- [x] Set up JSON schema validation
+- [x] Add dependency on `mcp-prompts-contracts`
+- [x] Create build scripts
 
-### Fáze 1: Základní nastavení
-- [x] Vytvořit package.json s potřebnými závislostmi
-- [x] Nastavit validaci JSON schémat
-- [x] Přidat závislost na mcp-prompts-contracts
-- [x] Vytvořit build skripty
+## Phase 2: Validation & Quality
+- [x] Implement validation of all prompts against the JSON schema
+- [x] Add automatic checks for placeholders in prompts
+- [x] Add quality checks (duplicate IDs, language correctness, required examples)
+- [x] Tools for placeholder checks (integrated in validation)
+- [x] Check for duplicate prompts by ID and content
+- [x] Ensure all prompts have required properties (`createdAt`, `updatedAt`, `examples`)
+- [x] Fix prompt data according to validation output
 
-### Fáze 2: Validace a Kvalita
-- [x] Implementovat validaci všech promptů proti JSON schématu
-- [x] Přidat automatické kontroly placeholderů v prompty
-- [x] Přidat automatické kontroly kvality promptů (duplicitní id, jazyková správnost, povinné příklady)
-- [x] Vytvořit nástroje pro kontrolu placeholders (hotovo v rámci validace)
-- [x] Implementovat kontrolu duplicitních promptů podle id a obsahu
-- [x] Kontrola, že všechny prompty mají povinné vlastnosti (createdAt, updatedAt, examples)
-- [x] Opravit data v prompt souborech dle výstupu validace
+## Phase 3: Synchronization & Automation
+- [ ] Automate validation of all prompts against the latest schema from contracts
+- [ ] Add tests to verify schema compliance with real catalog data
+- [ ] Set up GitHub Actions for automatic validation and build
 
-### Fáze 3: Synchronizace a automatizace
-- [ ] Automatizovat kontrolu, že všechny prompty odpovídají aktuálnímu schématu z contracts
-- [ ] Přidat testy, které ověří, že schémata odpovídají reálným datům z katalogu
-- [ ] Nastavit GitHub Actions pro automatickou validaci a build
+## Phase 4: Documentation & Onboarding
+- [ ] Improve documentation and onboarding for contributors
+- [ ] Add usage examples and guides
 
-### Fáze 4: Dokumentace a onboarding
-- [ ] Zlepšit dokumentaci a onboarding pro přispěvatele
-- [ ] Přidat příklady použití a návody
+## Phase 5: Catalog System Features
+- [ ] Improve catalog index system
+- [ ] Add search and filtering capabilities
+- [ ] Implement prompt categorization
+- [ ] Create API for catalog access
 
-### Fáze 5: Katalog Systém
-- [ ] Vylepšit katalog index systém
-- [ ] Přidat vyhledávání a filtrování
-- [ ] Implementovat kategorizaci promptů
-- [ ] Vytvořit API pro přístup ke katalogu
+## Phase 6: CI/CD Pipeline
+- [ ] Set up GitHub Actions for validation
+- [ ] Add automated quality checks
+- [ ] Configure NPM package publishing
+- [ ] Implement data-driven versioning
 
-### Fáze 6: CI/CD Pipeline
-- [ ] Nastavit GitHub Actions pro validaci
-- [ ] Přidat automatické kontroly kvality
-- [ ] Konfigurovat publikování NPM balíčku
-- [ ] Nastavit versioning založený na změnách dat
-
-### Fáze 7: Testování
-- [ ] Vytvořit testy pro validaci promptů
-- [ ] Přidat testy pro katalog systém
-- [ ] Otestovat kompatibilitu s implementacemi 
+## Phase 7: Testing
+- [ ] Create tests for prompt validation
+- [ ] Add tests for catalog system features
+- [ ] Test compatibility with implementations 
