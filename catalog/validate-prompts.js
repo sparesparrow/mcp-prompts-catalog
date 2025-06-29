@@ -21,6 +21,17 @@ function* walk(dir) {
 }
 
 let hasError = false;
+let hasPlaceholderError = false;
+function extractPlaceholders(content) {
+  const regex = /\{\{\s*([a-zA-Z0-9_\-]+)\s*\}\}/g;
+  const found = new Set();
+  let match;
+  while ((match = regex.exec(content)) !== null) {
+    found.add(match[1]);
+  }
+  return found;
+}
+
 for (const file of walk(promptsDir)) {
   const data = JSON.parse(fs.readFileSync(file, 'utf-8'));
   if (!validate(data)) {
@@ -28,10 +39,30 @@ for (const file of walk(promptsDir)) {
     console.error(`Validation failed for ${file}:`);
     console.error(validate.errors);
   } else {
-    console.log(`Valid: ${file}`);
+    // Kontrola placeholderů
+    const content = data.content || '';
+    const variables = Array.isArray(data.variables)
+      ? data.variables.map(v => (typeof v === 'string' ? v : v.name)).filter(Boolean)
+      : [];
+    const placeholders = Array.from(extractPlaceholders(content));
+    // Najdi placeholdery, které nejsou ve variables
+    const missingInVariables = placeholders.filter(p => !variables.includes(p));
+    // Najdi variables, které nejsou v content
+    const unusedVariables = variables.filter(v => !placeholders.includes(v));
+    if (missingInVariables.length > 0) {
+      hasPlaceholderError = true;
+      console.error(`\x1b[31m[Placeholder Error]\x1b[0m V promptu ${file} jsou placeholdery, které nejsou uvedeny v 'variables': ${missingInVariables.join(', ')}`);
+    }
+    if (unusedVariables.length > 0) {
+      hasPlaceholderError = true;
+      console.error(`\x1b[33m[Placeholder Warning]\x1b[0m V promptu ${file} jsou proměnné ve 'variables', které nejsou použity v 'content': ${unusedVariables.join(', ')}`);
+    }
+    if (!hasPlaceholderError) {
+      console.log(`Valid: ${file}`);
+    }
   }
 }
-if (hasError) {
+if (hasError || hasPlaceholderError) {
   process.exit(1);
 } else {
   console.log('All prompts are valid!');

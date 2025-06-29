@@ -9,10 +9,13 @@
 - [ ] Vytvořit build skripty
 
 ### Fáze 2: Validace a Kvalita
-- [ ] Implementovat validaci všech promptů proti JSON schématu
-- [ ] Přidat automatické kontroly kvality promptů
-- [ ] Vytvořit nástroje pro kontrolu placeholders
-- [ ] Implementovat kontrolu duplicitních promptů
+- [x] Implementovat validaci všech promptů proti JSON schématu
+- [x] Přidat automatické kontroly placeholderů v prompty
+- [ ] Přidat automatické kontroly kvality promptů (duplicitní id, jazyková správnost, povinné příklady)
+- [ ] Vytvořit nástroje pro kontrolu placeholders (hotovo v rámci validace)
+- [ ] Implementovat kontrolu duplicitních promptů podle id a obsahu
+- [ ] Kontrola, že všechny prompty mají pole examples (pokud je vyžadováno schématem)
+- [ ] Kontrola jazykové správnosti popisu a obsahu (volitelné)
 
 ### Fáze 3: Katalog Systém
 - [ ] Vylepšit katalog index systém
