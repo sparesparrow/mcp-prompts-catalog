@@ -218,5 +218,15 @@
       }
     }
   ],
-  "categories": ["integration", "multi-server", "configuration", "advanced", "docker"]
+  "categories": [
+    "integration",
+    "multi-server",
+    "configuration",
+    "advanced",
+    "docker"
+  ],
+  "tags": [],
+  "createdAt": "2025-06-29T20:20:06.463Z",
+  "updatedAt": "2025-06-29T20:20:06.463Z",
+  "version": 1
 }

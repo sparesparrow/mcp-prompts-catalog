@@ -37,5 +37,6 @@
       "additional_servers": "- **ElevenLabs**: Generate audio summaries for team standups\\n- **Brave Search**: Research best practices for API design patterns",
       "additional_guidelines": "This feature is high priority for the upcoming release, so focus on maintainable solutions that can be implemented quickly without sacrificing code quality. The team follows a trunk-based development approach with feature flags for in-progress work."
     }
-  }
+  },
+  "examples": []
 }

@@ -30,12 +30,21 @@
   "metadata": {
     "version": "1.0.0",
     "author": "MCP Prompts Team",
-    "requires": ["filesystem", "github", "postgres", "puppeteer"],
+    "requires": [
+      "filesystem",
+      "github",
+      "postgres",
+      "puppeteer"
+    ],
     "resourcePatterns": [
       "filesystem/{{project_path}}",
       "github/repo/{{owner}}/{{repo_name}}",
       "postgres/schema/{{database_name}}",
       "puppeteer/url/{{web_url}}"
     ]
-  }
+  },
+  "createdAt": "2025-06-29T20:20:06.505Z",
+  "updatedAt": "2025-06-29T20:20:06.505Z",
+  "version": 1,
+  "examples": []
 }

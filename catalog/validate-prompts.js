@@ -22,6 +22,10 @@ function* walk(dir) {
 
 let hasError = false;
 let hasPlaceholderError = false;
+// Sledování id pro detekci duplicit
+const seenIds = new Set();
+let hasDuplicateError = false;
+
 function extractPlaceholders(content) {
   const regex = /\{\{\s*([a-zA-Z0-9_\-]+)\s*\}\}/g;
   const found = new Set();
@@ -33,7 +37,22 @@ function extractPlaceholders(content) {
 }
 
 for (const file of walk(promptsDir)) {
+  if (file.endsWith('index.json')) continue; // ignoruj index.json
   const data = JSON.parse(fs.readFileSync(file, 'utf-8'));
+  // Kontrola duplicitních id
+  if (data.id) {
+    if (seenIds.has(data.id)) {
+      hasDuplicateError = true;
+      console.error(`\x1b[31m[Duplicate Error]\x1b[0m Duplicitní id promptu: ${data.id} (${file})`);
+    } else {
+      seenIds.add(data.id);
+    }
+  }
+  // Kontrola povinného pole examples (pokud je vyžadováno schématem)
+  if (data.isTemplate && !data.examples) {
+    hasError = true;
+    console.error(`\x1b[31m[Schema Error]\x1b[0m Prompt ${file} je šablona (isTemplate: true), ale chybí pole 'examples'.`);
+  }
   if (!validate(data)) {
     hasError = true;
     console.error(`Validation failed for ${file}:`);
@@ -62,7 +81,7 @@ for (const file of walk(promptsDir)) {
     }
   }
 }
-if (hasError || hasPlaceholderError) {
+if (hasError || hasPlaceholderError || hasDuplicateError) {
   process.exit(1);
 } else {
   console.log('All prompts are valid!');

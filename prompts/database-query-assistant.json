@@ -22,10 +22,16 @@
   "metadata": {
     "version": "1.0.0",
     "author": "MCP Prompts Team",
-    "requires": ["postgres"],
+    "requires": [
+      "postgres"
+    ],
     "resourcePatterns": [
       "postgres/schema/{{database_name}}",
       "postgres/table/{{database_name}}/{{specific_table}}"
     ]
-  }
+  },
+  "createdAt": "2025-06-29T20:20:04.666Z",
+  "updatedAt": "2025-06-29T20:20:04.666Z",
+  "version": 1,
+  "examples": []
 }

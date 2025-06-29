@@ -41,5 +41,14 @@
       }
     }
   ],
-  "categories": ["integration", "multi-server", "advanced", "orchestration"]
+  "categories": [
+    "integration",
+    "multi-server",
+    "advanced",
+    "orchestration"
+  ],
+  "tags": [],
+  "createdAt": "2025-06-29T20:20:04.466Z",
+  "updatedAt": "2025-06-29T20:20:04.468Z",
+  "version": 1
 }

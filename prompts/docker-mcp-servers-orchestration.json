@@ -48,5 +48,6 @@
       "postgres_password": "secure_password_here",
       "postgres_database": "mcp_prompts"
     }
-  }
+  },
+  "examples": []
 }

@@ -11,5 +11,8 @@
     "author": "MCP Prompts Team",
     "requires": ["filesystem"],
     "resourcePatterns": ["filesystem/{{project_path}}"]
-  }
+  },
+  "examples": [],
+  "createdAt": "2025-06-19T12:00:00Z",
+  "updatedAt": "2025-06-19T12:00:00Z"
 }

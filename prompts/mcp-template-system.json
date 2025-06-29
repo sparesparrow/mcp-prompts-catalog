@@ -57,6 +57,16 @@
       "MCP ElevenLabs Server",
       "PostgreSQL AI Server"
     ],
-    "resource_types": ["file", "memory", "github", "thinking", "voice", "pgai"]
-  }
+    "resource_types": [
+      "file",
+      "memory",
+      "github",
+      "thinking",
+      "voice",
+      "pgai"
+    ]
+  },
+  "createdAt": "2025-06-29T20:20:06.485Z",
+  "updatedAt": "2025-06-29T20:20:06.485Z",
+  "version": 1
 }

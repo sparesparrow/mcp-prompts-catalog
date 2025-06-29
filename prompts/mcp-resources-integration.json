@@ -16,12 +16,25 @@
     "custom_example_description",
     "custom_example_code"
   ],
-  "tags": ["mcp", "resources", "integration", "advanced", "multi-server", "template"],
+  "tags": [
+    "mcp",
+    "resources",
+    "integration",
+    "advanced",
+    "multi-server",
+    "template"
+  ],
   "createdAt": "2025-03-15T16:00:00.000Z",
   "updatedAt": "2025-03-15T16:00:00.000Z",
   "version": 1,
   "metadata": {
-    "recommended_servers": ["github", "filesystem", "postgres", "memory", "prompts"],
+    "recommended_servers": [
+      "github",
+      "filesystem",
+      "postgres",
+      "memory",
+      "prompts"
+    ],
     "example_variables": {
       "integration_task": "building a comprehensive project analysis tool",
       "custom_server": "TimeSeries",
@@ -34,5 +47,6 @@
       "custom_example_description": "Validate data consistency across different storage systems by comparing repositories, databases, and local files:",
       "custom_example_code": "async function validateDataConsistency() { ... }"
     }
-  }
+  },
+  "examples": []
 }
