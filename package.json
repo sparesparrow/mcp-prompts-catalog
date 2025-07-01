@@ -12,7 +12,15 @@
   "dependencies": {
     "@sparesparrow/mcp-prompts-contracts": "^1.0.0"
   },
+  "devDependencies": {
+    "@sparesparrow/mcp-prompts-contracts": "^1.0.0"
+  },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "files": [
+    "prompts/",
+    "index.js",
+    "schemas/"
+  ]
 } 
