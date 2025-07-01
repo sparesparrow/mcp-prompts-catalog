@@ -1,71 +1,115 @@
 # MCP Prompts Catalog
 
-This repository contains the official collection of prompt templates for the MCP Prompts ecosystem.
+> **Poznámka (cs):** Katalog nyní podporuje prompty ve formátech JSON, YAML, TXT a MD. Loader automaticky rozpozná a načte správný formát.
 
-## Purpose
+A curated collection of prompts and templates for the MCP ecosystem. This package is part of the MCP Prompts monorepo and serves as the single source of truth for all default prompts and sequences.
 
-- Centralized, versioned catalog of high-quality prompt templates for use in MCP-compatible servers and clients.
-- Ensures consistency, validation, and discoverability of prompts across the ecosystem.
-
-## Prompt Structure
-
-Each prompt is a JSON file with the following structure:
-
-```json
-{
-  "id": "unique-prompt-id",
-  "name": "Human-Readable Prompt Name",
-  "description": "Brief description of the prompt's purpose",
-  "content": "The actual prompt content with {{variables}}",
-  "isTemplate": true,
-  "variables": ["list", "of", "variable", "names"],
-  "tags": ["relevant", "tags"],
-  "createdAt": "2025-03-15T12:00:00.000Z",
-  "updatedAt": "2025-03-15T12:00:00.000Z",
-  "version": 1,
-  "examples": [],
-  "metadata": {}
-}
-```
-
-- All prompts are validated against the JSON schema from `mcp-prompts-contracts`.
-- Templates (`isTemplate: true`) must define `variables` and `examples`.
-
-## Validation Workflow
-
-- Use the script `catalog/validate-prompts.js` to validate all prompts for schema compliance, placeholder consistency, and quality checks (duplicate IDs, required examples, language correctness).
+## Installation
 
 ```bash
-node catalog/validate-prompts.js
+npm install @sparesparrow/mcp-prompts-catalog
 ```
 
-- For contract-level validation (against the latest schema from contracts):
+## Usage
 
-```bash
-node scripts/validate-against-contracts.js
+You can import or require prompts and catalog utilities from this package in your MCP-compatible projects:
+
+```js
+const {
+  getPromptsDir,
+  getCategories,
+  listPrompts,
+  loadPrompt,
+} = require('@sparesparrow/mcp-prompts-catalog');
+
+console.log(getPromptsDir()); // Absolute path to the prompts directory
+console.log(getCategories()); // [ 'general', 'code-review', ... ]
+console.log(listPrompts('general')); // [ 'development-system-prompt', 'task-list-helper', ... ]
+console.log(loadPrompt('development-system-prompt', 'general'));
 ```
 
-- For automated fixing of missing required fields:
+## Category Structure
 
-```bash
-node scripts/fix-prompts.js
+Prompts are organized by category:
+
+```
+prompts/
+  general/
+    development-system-prompt.json
+    task-list-helper.json
+  code-review/
+    ...
+  ...
 ```
 
-## Publishing to NPM
+## Supported prompt formats
 
-This package can be published to NPM as `@sparesparrow/mcp-prompts-catalog` for easy consumption by MCP servers and clients.
+You can store prompts in the following formats:
+- `.json` (recommended for structured prompts)
+- `.yaml` / `.yml` (YAML, for readable structured prompts)
+- `.txt` (plain text prompt)
+- `.md` (Markdown prompt)
 
-```bash
-npm publish --access public
+The loader will automatically detect the file extension and parse the prompt accordingly. All formats are converted to a unified object for further processing.
+
+### Example: Adding a new prompt
+
+- **JSON**: `my-prompt.json`
+- **YAML**: `my-prompt.yaml`
+- **Plain text**: `my-prompt.txt`
+- **Markdown**: `my-prompt.md`
+
+Place your file in the appropriate category folder. The loader will find and parse it automatically.
+
+### Example: YAML prompt
+
+```yaml
+name: my-yaml-prompt
+description: Example YAML prompt
+template: |
+  This is a YAML prompt with a {{placeholder}}.
 ```
 
-## CI/CD and Automation
+### Example: TXT prompt
 
-- Planned: GitHub Actions for automatic validation, build, and publishing.
-- Planned: Automated versioning based on data changes.
+```
+This is a plain text prompt. You can use {{placeholders}} as well.
+```
+
+## Adding or Updating Prompts
+
+- All prompt JSON files are managed in this package under the `prompts/` directory, organized by category.
+- To add a new prompt, create a new JSON file in the appropriate category directory and follow the existing schema.
+- To update a prompt, edit the corresponding JSON file and submit a pull request.
+
+## Testing
+
+To test that the catalog package works after extraction, run a simple Node.js script:
+
+```js
+const { prompts } = require('@sparesparrow/mcp-prompts-catalog');
+console.log(prompts['development-system-prompt']);
+```
+
+Or, for TypeScript:
+
+```ts
+import { prompts } from '@sparesparrow/mcp-prompts-catalog';
+console.log(prompts['development-system-prompt']);
+```
+
+This should print the prompt object to the console.
 
 ## Contributing
 
-- Please follow the prompt structure and validation rules.
-- Run validation scripts before submitting a pull request.
-- See `TODO.md` for roadmap and open tasks.
+Contributions are welcome! Please see the main repository's [CONTRIBUTING.md](../../CONTRIBUTING.md) for guidelines.
+
+## License
+
+MIT
+
+## TODO
+
+- [ ] Rozšířit loader o podporu více formátů promptů (JSON, YAML, TXT, MD)
+- [ ] Otestovat načítání promptů ve všech podporovaných formátech
+- [ ] (Volitelné) Přidat podporu pro CSV, XML, další formáty
