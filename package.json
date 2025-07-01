@@ -10,7 +10,8 @@
     "url": "https://github.com/sparesparrow/mcp-prompts-catalog.git"
   },
   "dependencies": {
-    "@sparesparrow/mcp-prompts-contracts": "^1.0.0"
+    "@sparesparrow/mcp-prompts-contracts": "^1.0.0",
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
     "@sparesparrow/mcp-prompts-contracts": "^1.0.0"
