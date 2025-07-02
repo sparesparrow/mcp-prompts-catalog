@@ -1,0 +1,19 @@
+{
+  "name": "Code Review",
+  "description": "A template for requesting code reviews",
+  "content": "Please review the following code for:\n1. Bugs or logic errors\n2. Performance issues\n3. Security vulnerabilities\n4. Style/convention violations\n5. Opportunities for improvement\n\nCode to review:\n```{{language}}\n{{code}}\n```",
+  "isTemplate": true,
+  "variables": [
+    "language",
+    "code"
+  ],
+  "tags": [
+    "development",
+    "review",
+    "template"
+  ],
+  "id": "code-review",
+  "createdAt": "2025-03-26T02:21:16.384Z",
+  "updatedAt": "2025-03-26T02:21:16.384Z",
+  "version": 1
+}

@@ -1,6 +1,6 @@
 {
   "name": "@sparesparrow/mcp-prompts-catalog",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "description": "A curated collection of prompts and templates for the MCP ecosystem.",
   "main": "index.js",
   "types": "index.d.ts",
